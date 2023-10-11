@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dist/css/bootstrap.css" th:href="@{/dist/css/bootstrap.css}"
+          rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" th:href="@{/assets/css/ie10-viewport-bug-workaround.css}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/dashboard.css" th:href="@{/assets/css/dashboard.css}" rel="stylesheet">
+</head>
+
+<body>
+
+
+<!--导航栏-->
+<div th:replace="~{common/top::top_nav}"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!--sidebar-->
+        <div th:replace="~{common/left::sidebar}"></div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">修改员工信息</h1>
+
+            <div class="row">
+                <form class="form-horizontal"
+                      action="/emp/update" method="post" th:action="@{/emp/update}">
+                    <!--修改添加方式为  PUT-->
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">员工编号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3"
+                                   placeholder="例如:zhangsan" name="empno" readonly="readonly"
+                                   th:value="${empInfo.empno}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">员工姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3"
+                                   placeholder="例如:zhangsan" name="ename" th:value="${empInfo.ename}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">岗位</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3"
+                                   placeholder="例如:保镖" name="job" th:value="${empInfo.job}">
+                        </div>
+                    </div>
+
+                    <div th:text="${session.msg}" style="color: red"></div>
+<!--                    <div class="form-group">-->
+<!--                        <label for="inputPassword3" class="col-sm-2 control-label">上级</label>-->
+<!--                        <div class="col-sm-10">-->
+<!--                            <input type="text" class="form-control" id="inputPassword3"-->
+<!--                                   placeholder="例如:1" name="mgr" th:value="${empInfo.mgr}">-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">入职日期</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="inputPassword3"
+                                   placeholder="例如:2018-6-11" name="hiredate" th:value="${empInfo.hiredate}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">薪水</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3"
+                                   placeholder="例如:2000.00" name="sal" th:value="${empInfo.sal}">
+                        </div>
+                    </div>
+
+                    <!-- 部门从数据库的下拉框 -->
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">部门</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="deptno">
+                                <!--<c:forEach items="${deptList}" var="dept">-->
+                                <option value="${dept.deptno}" th:each="dept:${deptList}" th:value="${dept.deptno}"
+                                        th:text="${dept.dname}">${dept.dname}
+                                </option>
+                                <!--</c:forEach>-->
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">修改</button>
+                            <button type="button" class="btn btn-info" onclick="history.back()">返回</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="dist/js/jquery.min.js" th:src="@{/dist/js/jquery.min.js}"></script>
+<script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="dist/js/bootstrap.min.js" th:src="@{/dist/js/bootstrap.js}"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="assets/js/vendor/holder.min.js" th:src="@{/assets/js/vendor/holder.min.js}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="assets/js/ie10-viewport-bug-workaround.js" th:src="@{/assets/js/ie10-viewport-bug-workaround.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eagle.mapper.EmpMapper">
+
+    <resultMap id="BaseResultMap" type="com.eagle.pojo.Emp">
+            <id property="empno" column="empno" jdbcType="INTEGER"/>
+            <result property="ename" column="ename" jdbcType="VARCHAR"/>
+            <result property="job" column="job" jdbcType="VARCHAR"/>
+            <result property="hiredate" column="hiredate" jdbcType="TIMESTAMP"/>
+            <result property="sal" column="sal" jdbcType="VARCHAR"/>
+            <result property="dname" column="dname" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        empno,ename,job,
+        hiredate,sal,dname
+    </sql>
+</mapper>

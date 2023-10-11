@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://rm-cn-zxu3bq31c0005o3o.rwlb.rds.aliyuncs.com/smbms?serverTimezone=Asia/Shanghai
+    username: trokdata
+    password: hz1969244165!
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
